@@ -1,2 +1,2 @@
 # TechXplorer
-Yea 
+pip install -r requirements.txt

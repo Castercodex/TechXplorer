@@ -1,0 +1,12 @@
+@media screen and (max-width: 800px) {
+  .our-courses {
+    .available-courses {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .the-team {
+    .team-portfolio {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

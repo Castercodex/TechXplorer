@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block extrastyles %}
+  <style>
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+{% endblock extrastyles %}
+{% block content %}
+<header class="header">
+  <h3><a href="/">TechXplorer</h3>
+<nav class="nav">
+  
+  <ul class="nav-links">
+    <a href="#" class="nav-link"><li>About</li></a>
+    <a href="#" class="nav-link"><li>Our Team</li></a>
+    <a href="/register" class="nav-link"><li>Sign-up</li></a>
+    <a href="/login" class="nav-link"><li>Login</li></a>
+  </ul>
+</nav>
+</header>
+
+
+{% endblock content %}

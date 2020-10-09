@@ -1,0 +1,29 @@
+{% extends 'accounts/register/register_base.html' %} {% load static %} {% load crispy_forms_tags%}
+
+{% block extrastyle %}
+<style>
+    form{
+        height: 100vh;
+    }
+    .form-group{
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        align-items: center;
+    }
+</style>
+{% endblock extrastyle %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <form method="post" class="form-group">
+        {% csrf_token %}
+
+        {{form|crispy}}
+        <p>Don't have an account? Create One <a href="/register">Here</a></p>
+        <button type="submit" class="btn btn-success">Login</button>
+        
+    </form>
+    </div>
+{% endblock content %}

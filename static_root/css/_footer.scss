@@ -1,0 +1,91 @@
+.footer {
+  background: rgb(0, 0, 0);
+  color: #fff;
+  .company-name {
+    text-align: center;
+    h3 {
+      letter-spacing: 10px;
+      font-size: 30px;
+      font-style: bold;
+    }
+  }
+  .details {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    .text {
+      flex: 0.2;
+    }
+    .subscribe {
+      flex: 0.5;
+      .input {
+        height: 50px;
+        width: 300px;
+        background: rgb(29, 29, 29);
+        border: none;
+        color: #fff;
+      }
+      .sub-btn {
+        height: 50px;
+        width: 60px;
+        border: none;
+        background: rgb(0, 162, 255);
+        cursor: pointer;
+        transition: 0.4s linear;
+        i {
+          color: #fff;
+        }
+        &:hover {
+          background: rgb(4, 88, 136);
+        }
+      }
+    }
+    .social-links {
+      .social-link {
+        cursor: pointer;
+        i {
+          font-size: 20px;
+          color: #fff;
+        }
+        border: none;
+        border-radius: 100px;
+        width: 40px;
+        height: 40px;
+        background: rgb(119, 119, 119);
+        transition: 0.3s linear;
+        color: rgb(119, 119, 119);
+        &:hover {
+          color: #fff;
+          background: rgb(46, 144, 201);
+        }
+      }
+    }
+  }
+  .summary {
+    .details-list {
+      line-height: 100px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+
+      .detail {
+        text-decoration: none;
+        color: #fff;
+        transition: 0.4s linear;
+        cursor: pointer;
+        &:hover {
+          color: rgb(180, 176, 176);
+        }
+      }
+    }
+  }
+  .copy-last {
+    background: rgb(119, 119, 119);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+}

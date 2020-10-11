@@ -1,0 +1,156 @@
+{% extends 'account/register/register_base.html'%}
+{% load static %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block extrastyle %}
+<style>
+    header{
+        position: fixed;
+    }
+    .empty{
+        height: 20vh;
+    }
+    .anonuser{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    li{
+        list-style: none;
+    }
+    .container{
+        padding-left: 200px;
+    }
+    .navigation{
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        background: rgb(0, 0, 0);
+         height: 100vh;
+         z-index: 1;
+    }
+    .navigation-links{
+        width: 130px;
+    }
+    .user-link{
+        color: #fff;
+        line-height: 100px;
+    }
+
+    .enrolled,.all,.paid,.profile{
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s linear;
+    }
+    .enrolled.active,
+    .paid.active,
+    .all.active,
+    .profile.active{
+        opacity: 1;
+        pointer-events: all;
+        flex-direction: column;
+    }
+
+    
+    .active > .btn{
+        background: rgb(49, 133, 0);
+        box-shadow: 1px 0px 10px 1px rgba(94, 255, 0, 0.637);
+    }
+
+    .header{
+        background: #fff;
+    }
+     .btn{
+        border: none;
+        color: #fff;
+        transition: 0.3s linear;
+      }
+     .alert{
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+</style>
+{% endblock extrastyle %}
+{% block navbar %}
+{% if user.is_authenticated %}
+{% include './nav.html' %}
+<div class="navigation">
+    <ul class="navigation-links">
+        <a href="#enrolled" class="user-link enrolled-link active">
+            <button class="btn btn-lg btn-primary"><li>Enrolled Courses</li></button>
+        </a>
+        <a href="#available" class="user-link all-link">
+            <button class="btn btn-lg btn-primary"><li>All Courses</li></button>
+        </a>
+        <a href="#paid" class="user-link paid-link">
+            <button class="btn btn-lg btn-primary"><li>Paid Courses</li></button>
+        </a>
+        <a href="#profile" class="user-link profile-link">
+            <button class="btn btn-lg btn-primary"><li>User Profile</li></button>
+        </a>
+    </ul>
+</div>
+{% else %}
+<div class="alert alert-danger" role="alert">
+    <strong>Not Authourized</strong> 
+</div>
+<h1 class="anonuser">Sorry You Must Login First, click <a href="/accounts/login">here</a></h1>
+{% endif %}
+
+{% endblock navbar %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+     
+    <div class="page-header">
+        <div class="empty"></div>
+        <div class="alert alert-success" role="alert">
+            <p>Welcome Back {{request.user}}</p>
+        </div>
+        <hr width="100%">
+    </div>
+    <div class="row">
+            
+        <section class="enrolled active">
+            <h1>Your Present Courses</h1>
+            {% for enrolled_course in enrolled_courses %}
+                <h1>{{ enrolled_course.course }}</h1>
+            {% endfor %}
+        </section>
+        <section class="all">
+            <h1>Available Courses</h1>
+            {% for course in courses %}
+                <div class="card-deck" id="card">
+                    <!--tips: replace .card-group by .card-deck to obtain cards that aren’t attached to one another-->
+                    <!--Card1-->
+                    <form action="" method="POST">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ course.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ course.status }}</h6>
+                            <p class="card-text">{{ course.description }}</p>
+                           <button type="submit"><a href="" class="btn btn-primary">Enroll Now</a></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            {% endfor %}
+        </section>
+      <section class="paid">
+          <h1>Paid Courses</h1>
+      </section>
+      <section class="profile">
+          <h1>Profile</h1>
+      </section>
+    </div>
+</div>
+<script src="{% static 'js/app.js' %}"></script>
+{% endif %}
+{% endblock content %}

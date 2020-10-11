@@ -1,9 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% include 'navbar.html' %}
+
+{% block title %} Xplorer {% endblock title %}
 <div class="intro-showoff">
   <div class="showoff-text">
     <h1>Tech <span class="showoff-xplorer">Xplorer</span></h1>
     <p>YOUR SURE WAY TO BE THAT BETTER DEVELOPER</p>
+    {% if user.is_authenticated %}
+    <div class="btn"><a href="/dashboard"><button class="intro-btn">Dashboard</button></a></div>
+    {% else %}
     <div class="btn"><button class="intro-btn">Get Started</button></div>
+    {% endif %}
   </div>
 </div>
 
@@ -49,7 +55,7 @@
         </p>
       </div>
       <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
+      <button id="btn-enroll">Enroll Now</button>
       </div>
     </div>
     <div class="thecourse">

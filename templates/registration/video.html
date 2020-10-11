@@ -1,0 +1,14 @@
+{% extends 'account/register/register_base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block navbar %}
+{% include './nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="div">
+    {% for nice in python %}
+    <p>{{ nice.title }}</p>
+    {% video nice.video_url 'small' %}
+    {% endfor %}
+</div>
+{% endblock content %}

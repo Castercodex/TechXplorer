@@ -8,6 +8,7 @@ class Course(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField()
     status = models.CharField(max_length=4)
+    image = models.ImageField()
     slug = models.SlugField()
 
     def __str__(self):
@@ -15,11 +16,11 @@ class Course(models.Model):
 
 
 class EnrolledCourse(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE, default=False, null=True)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", default=1)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course")
 
     def __str__(self):
-        return self.course.name
+        return self.user.username
 
 class CompletedCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

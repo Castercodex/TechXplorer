@@ -130,16 +130,15 @@
                 <div class="card-deck" id="card">
                     <!--tips: replace .card-group by .card-deck to obtain cards that aren’t attached to one another-->
                     <!--Card1-->
-                    <form action="" method="POST">
                     <div class="card">
+                        
                         <div class="card-body">
                             <h5 class="card-title">{{ course.name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ course.status }}</h6>
                             <p class="card-text">{{ course.description }}</p>
-                           <button type="submit"><a href="" class="btn btn-primary">Enroll Now</a></button>
+                           <button type="submit"><a href="/add_to_enrolled/{{ course.slug }}" class="btn btn-primary">Enroll Now</a></button>
                         </div>
                     </div>
-                    </form>
                 </div>
             {% endfor %}
         </section>

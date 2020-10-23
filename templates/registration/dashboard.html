@@ -120,26 +120,29 @@
             
         <section class="enrolled active">
             <h1>Your Present Courses</h1>
-            {% for enrolled_course in enrolled_courses %}
+            {% for enrolled_course in user.ucourse.all %}
                 <h1>{{ enrolled_course.course }}</h1>
             {% endfor %}
         </section>
         <section class="all">
             <h1>Available Courses</h1>
             {% for course in courses %}
+            <form method="POST">
                 <div class="card-deck" id="card">
                     <!--tips: replace .card-group by .card-deck to obtain cards that aren’t attached to one another-->
                     <!--Card1-->
+                    
                     <div class="card">
                         
                         <div class="card-body">
                             <h5 class="card-title">{{ course.name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ course.status }}</h6>
                             <p class="card-text">{{ course.description }}</p>
-                           <button type="submit"><a href="/add_to_enrolled/{{ course.slug }}" class="btn btn-primary">Enroll Now</a></button>
+                           <button type="submit"><a href="/add_to_enrolled/" class="btn btn-primary">Enroll Now</a></button>
                         </div>
                     </div>
                 </div>
+                </form>
             {% endfor %}
         </section>
       <section class="paid">

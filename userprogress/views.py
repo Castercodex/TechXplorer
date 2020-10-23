@@ -12,12 +12,24 @@ def dashboard(request):
     return render(request, "registration/dashboard.html", context)
 
 
-def add_to_enrolled(request, slug):
-    course = get_object_or_404(Course, slug=slug)
-    enrolled_course, created = EnrolledCourse.objects.get_or_create(
-        course=course,
-        user=request.user,
-    )
+def add_to_enrolled(response):
+    if response.method == "POST":
+        course = EnrolledCourse(response.POST)
+    
+        if course.is_valid():
+            n = course.clean_data["name"]
+            c = Course(name="n")
+            c.save()
+            response.user.ucourse.add(c)
+    else:
+        course = EnrolledCourse()
+
+# def add_to_enrolled(request, slug):
+#     course = get_object_or_404(Course, slug=slug)
+#     enrolled_course, created = EnrolledCourse.objects.get_or_create(
+#         course=course,
+#         user=request.user,
+#     )
     # enrolled_qs = EnrolledCourse.objects.filter()
     # # if enrolled_qs.exists():
     # #     enrolled = enrolled_qs

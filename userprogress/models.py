@@ -16,7 +16,7 @@ class Course(models.Model):
 
 
 class EnrolledCourse(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ucourse", default=1, null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course")
 
     def __str__(self):

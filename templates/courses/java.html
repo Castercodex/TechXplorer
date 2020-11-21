@@ -1,0 +1,40 @@
+{% extends 'account/register/register_base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block title %} Java Tutorial {% endblock title %}
+{% block extrastyle %}
+<style>
+   
+</style>
+{% endblock extrastyle %}
+{% block navbar %}
+{% include 'registration/nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="container-fluid">
+<div class="empty">
+
+</div>
+<div class="course-titles">
+    <h1>java TUTORIALS</h1>
+    {% for course in java %}
+    <a href="#{{ course.id }}"><p>{{ course.title }}</p></a>
+    {% endfor %}
+</div>
+{% for course in java %}
+<div class="the-course" id="#{{ course.id }}">
+    
+    {% video course.video_url 'small' %}
+    <h4>{{ course.title }}</h4>
+    <div class="description">
+        <p>{{ course.description }}</p>
+    </div>
+    <div class="btns">
+        <a href="" class="btn btn-primary">Previous Lesson</a>
+        <a href="" class="btn btn-success">Next Lesson</a>
+    </div>
+    
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

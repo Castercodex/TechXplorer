@@ -10,7 +10,7 @@ def dashboard(request):
     enrolled_courses = EnrolledCourse.objects.all()
     context = {"courses": courses, "enrolled_courses": enrolled_courses}
     return render(request, "registration/dashboard.html", context)
-
+    
 
 def enrolled(response):
     if response.method == "POST":
@@ -31,6 +31,7 @@ def add_to_enrolled(request, slug):
     enrolled_course, created = EnrolledCourse.objects.get_or_create(
         course=course,
         user=request.user,
+        slug=slug,
     )
     # enrolled_qs = EnrolledCourse.objects.filter()
     # # if enrolled_qs.exists():

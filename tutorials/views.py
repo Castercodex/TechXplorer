@@ -7,22 +7,71 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-
+from userprogress.models import Course
+from django.views.generic import DetailView
 # Create your views here.
 
 
 def home_view(request):
-    return render(request, "home.html")
+    courses = Course.objects.all()
+    context = {"courses": courses}
+    return render(request, "home.html", context)
 
 
+# def course_view(request):
+#     python = Python.objects.all()
+#     context = {"python": python}
+#     return render(request, "registration/video.html", context)
 
 
-def trial(request):
-    python = Python.objects.all()
-    context = {"python": python}
-    return render(request, "registration/video.html", context)
+def php_view(request):
+    php = Php.objects.all()
+    context = {
+        "php": php,
+    }
+    return render(request, "./courses/php.html", context)
+
+class PythonDetail(DetailView):
+    model = Python
+    template_name = "./courses/python.html"
+    
+    def python_view(request):
+        python = Python.objects.all()
+        context = {
+            "python": python,
+        }
+        return render(request, "./courses/python.html", context)
+
+    
+def c_view(request):
+    c = C.objects.all()
+    context = {
+        "c": c,
+    }
+    return render(request, "./courses/c.html", context)
 
 
+def cpp_view(request):
+    cpp = Cpp.objects.all()
+    context = {
+        "cpp": cpp,
+    }
+    return render(request, "./courses/cpp.html", context)
+
+def java_view(request):
+    java = Java.objects.all()
+    context = {
+        "java": java,
+    }
+    return render(request, "./courses/java.html", context)
+
+
+def js_view(request):
+    js = JavaScript.objects.all()
+    context = {
+        "js": js,
+    }
+    return render(request, "./courses/js.html", context)
 # @login_required
 # def add_to_course(request, slug):
 #     item = get_object_or_404(Item, slug=slug)

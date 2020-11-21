@@ -17,6 +17,7 @@
     align-items: center;
     width: 100%;
     height: 10vh;
+    top: 0;
     background: #000;
   }
   nav {
@@ -60,6 +61,12 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+@media screen and (max-width: 800px){
+  .logout{
+    top: 25.5vh;
+  }
+}
 </style>
 {% endblock extrastyles %} {% block content %}
 
@@ -70,8 +77,10 @@
   <nav>
     <ul class="nav-links">
       <div class="user-info">
-        <i class="fa fa-user">&nbsp;&nbsp;{{request.user}}</i>
+        <i class="fa fa-user">&nbsp;&nbsp;<span class="username">{{request.user}}</span></i>
+        
       </div>
+      
     </ul>
   </nav>
 </header>

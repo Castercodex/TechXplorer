@@ -3,6 +3,7 @@ from django.db import models
 from embed_video.fields import EmbedVideoField
 from django.shortcuts import reverse
 
+
 # Create your models here.
 # 
 
@@ -16,10 +17,6 @@ class Cpp(models.Model):
     def __str__(self):
         return self.title
     
-    def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
-            'slug': self.slug
-        })
 
 
 class C(models.Model):
@@ -32,10 +29,6 @@ class C(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
-            'slug': self.slug
-        })
 
 class Java(models.Model):
     title = models.CharField(max_length=100)
@@ -46,11 +39,6 @@ class Java(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
-            'slug': self.slug
-        })
 
 
 class JavaScript(models.Model):
@@ -63,10 +51,6 @@ class JavaScript(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
-            'slug': self.slug
-        })
 
 
 class Python(models.Model):
@@ -80,7 +64,7 @@ class Python(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
+        return reverse("tutorials:python", kwargs={
             'slug': self.slug
         })
 
@@ -94,7 +78,4 @@ class Php(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("tutorial:course", kwargs={
-            'slug': self.slug
-        })
+ 

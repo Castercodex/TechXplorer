@@ -1,38 +1,42 @@
-{% extends 'base.html' %} 
-
-{% block extrastyles %}
-  <style>
-    .home {
-      text-decoration: none;
-      color: #fff;
-    }
-    .home:hover{
-      text-decoration: none;
-      color: #fff
-    }
-    a{
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
-{% endblock extrastyles %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block extrastyles %}
+<style>
+  .home {
+    text-decoration: none;
+    color: #fff;
+  }
+  .home:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+{% endblock extrastyles %} {% block content %}
 <header class="header">
-  <h3><a class="home" href="/">TechXplorer</h3>
-<nav class="nav">
-  
-  <ul class="nav-links">
-    <a href="#" class="nav-link"><li>About</li></a>
-    <a href="#" class="nav-link"><li>Our Team</li></a>
-    {% if user.is_authenticated %}
-    <a href="accounts/logout" class="nav-link"><li>Sign-Out</li></a>
-    {% else %}
-    <a href="/register" class="nav-link"><li>Sign-up</li></a>
-    <a href="/accounts/login" class="nav-link"><li>Login</li></a>
-    {% endif %}
-  </ul>
-</nav>
+  <h3><a class="home" href="/">TechXplorer</a></h3>
+  <nav class="nav">
+    <div class="burger">
+      <img src="{% static '/img/icons/mobile-nav.png' %}" alt="" />
+    </div>
+    <ul class="nav-links">
+      <a href="#" class="nav-link"><li>About</li></a>
+      <a href="#" class="nav-link"><li>Our Team</li></a>
+      {% if user.is_authenticated %}
+      <a href="accounts/logout" class="nav-link"><li>Sign-Out</li></a>
+      {% else %}
+      <a href="/register" class="nav-link"><li>Sign-up</li></a>
+      <a href="/accounts/login" class="nav-link"><li>Login</li></a>
+      {% endif %}
+    </ul>
+  </nav>
 </header>
-
+<script src="{% static '/js/app.js' %}"></script>
+<script>
+  burger.onclick = () => {
+    nav.classList.toggle("nav-reveal");
+  };
+</script>
 
 {% endblock content %}

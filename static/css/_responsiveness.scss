@@ -1,4 +1,11 @@
 @media screen and (max-width: 800px) {
+ 
+  .introduction {
+    top: -50px;
+    .text {
+      font-size: 15px;
+    }
+  }
   .our-courses {
     .available-courses {
       grid-template-columns: repeat(2, 1fr);
@@ -7,6 +14,22 @@
   .the-team {
     .team-portfolio {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .details {
+    flex-flow: column;
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  .our-courses {
+    .available-courses {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  .the-team {
+    .team-portfolio {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

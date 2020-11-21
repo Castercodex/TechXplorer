@@ -9,7 +9,7 @@ class Course(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=4)
     image = models.ImageField()
-    slug = models.SlugField()
+    slug = models.SlugField(default=False)
 
     def __str__(self):
         return self.name
@@ -18,6 +18,7 @@ class Course(models.Model):
 class EnrolledCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ucourse", default=1, null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="course")
+    slug = models.SlugField(default=Course)
 
     def __str__(self):
         return self.user.username

@@ -31,14 +31,15 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "tecxplorer.herokuapp.com",
     "https://tecxplorer.herokuapp.com",
+    "*",
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'userprogress',
-    'embed_video',
+    "userprogress",
+    "embed_video",
     "crispy_forms",
     "accounts",
     "tutorials",
@@ -146,5 +147,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-LOGIN_REDIRECT_URL = '/dashboard'
-
+LOGIN_REDIRECT_URL = "/dashboard"

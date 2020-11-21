@@ -7,7 +7,7 @@
 
 .header {
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   background: #3e81fd;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,6 +32,10 @@
           flex: 0.4;
 }
 
+.header .nav .burger {
+  display: none;
+}
+
 .header .nav .nav-links {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -53,6 +57,90 @@
       -ms-flex: 1;
           flex: 1;
   color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .header .nav .burger {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .header .nav .nav-links {
+    position: absolute;
+    background: #3e81fd;
+    top: -1000px;
+    -webkit-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-animation: 0.5s nav-return;
+            animation: 0.5s nav-return;
+    z-index: -1;
+  }
+  .header .nav .nav-reveal {
+    -webkit-animation: 0.7s nav-slick linear;
+            animation: 0.7s nav-slick linear;
+    text-align: justify;
+    display: block;
+    position: absolute;
+    top: 10vh;
+    padding-left: 1rem;
+    padding-right: 5rem;
+    padding-top: 3rem;
+    z-index: -1;
+    height: 100vh;
+    width: 100%;
+  }
+  @-webkit-keyframes nav-slick {
+    0% {
+      top: -1000px;
+    }
+    50% {
+      top: 3vh;
+    }
+    100% {
+      top: 10vh;
+    }
+  }
+  @keyframes nav-slick {
+    0% {
+      top: -1000px;
+    }
+    50% {
+      top: 3vh;
+    }
+    100% {
+      top: 10vh;
+    }
+  }
+  @-webkit-keyframes nav-return {
+    0% {
+      top: 10vh;
+    }
+    50% {
+      top: 3vh;
+    }
+    100% {
+      top: -1000px;
+    }
+  }
+  @keyframes nav-return {
+    0% {
+      top: 10vh;
+    }
+    50% {
+      top: 3vh;
+    }
+    100% {
+      top: -1000px;
+    }
+  }
 }
 
 .intro-showoff {
@@ -330,6 +418,12 @@
 }
 
 @media screen and (max-width: 800px) {
+  .introduction {
+    top: -50px;
+  }
+  .introduction .text {
+    font-size: 15px;
+  }
   .our-courses .available-courses {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
@@ -337,6 +431,24 @@
   .the-team .team-portfolio {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+  }
+  .details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .our-courses .available-courses {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .the-team .team-portfolio {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -458,5 +570,52 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+}
+
+.empty {
+  height: 10vh;
+}
+
+.course-titles {
+  position: absolute;
+  height: 50vh;
+  background: #e9e9e9;
+  width: 30%;
+  text-align: justify;
+  overflow-y: auto;
+}
+
+.the-course {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-40%, -40%);
+          transform: translate(-40%, -40%);
+}
+
+.the-course .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.the-course .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
 }
 /*# sourceMappingURL=styles.css.map */

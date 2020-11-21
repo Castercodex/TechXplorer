@@ -1,0 +1,39 @@
+{% extends 'account/register/register_base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block title %} Python Tutorial {% endblock title %}
+{% block extrastyle %}
+<style>
+   
+</style>
+{% endblock extrastyle %}
+{% block navbar %}
+{% include 'registration/nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="container-fluid">
+<div class="empty">
+
+</div>
+<div class="course-titles">
+    <h1>Python TUTORIALS</h1>
+    
+    <a href="{{ object.slug }}"><p>{{ object.title }}</p></a>
+</div>
+
+    <div class="the-course" id="#{{ course.id }}">
+        
+        {% video object.video_url 'small' %}
+        <h4>{{ object.title }}</h4>
+        <div class="description">
+            <p>{{ object.description }}</p>
+        </div>
+        <div class="btns">
+            <a href="" class="btn btn-primary">Previous Lesson</a>
+            <a href="{{ slug }}" class="btn btn-success">Next Lesson</a>
+        </div>
+    
+    </div>
+
+</div>
+{% endblock content %}

@@ -9,7 +9,53 @@
         position: fixed;
     }
     .empty{
-        height: 20vh;
+        padding-top: 12vh;
+    }
+    .continue{
+        width: 150px;
+        height: 50px;
+        background: rgb(62, 129, 253);
+        color: #fff;
+        border: none;
+    }
+    a{
+        text-decoration: none;
+        color: rgb(0, 255, 213);
+    }
+    a:hover{
+        text-decoration: none;
+        color: #fff;
+    }
+    .enrolled-courses{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        padding: 50px;
+        grid-gap: 50px;
+    }
+    .course-btn{
+        padding-top: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .course-btn > button{
+        width: 150px;
+        height: 50px;
+        background: rgb(62, 129, 253);
+        color: #fff;
+        border: none;
+
+    }
+    .course {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        height: 40vh;
+        box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.5);
     }
     .anonuser{
         position: absolute;
@@ -27,13 +73,16 @@
         position: fixed;
         top: 10vh;
         left: 0;
-        background: rgb(0, 0, 0);
          height: 100vh;
          z-index: 1;
+         background: #000;
     }
+    
     .navigation-links{
         width: 130px;
+        background: #000;
     }
+   
     .user-link{
         color: #fff;
         line-height: 100px;
@@ -74,13 +123,52 @@
          align-items: center;
          justify-content: center;
      }
+    @media screen and (max-width: 800px) {
+        .container{
+        padding-left: 20px;
+    }
+     .empty{
+        height: 18vh;
+    }
+   
+        .enrolled-courses{
+        grid-template-columns: repeat(1, 1fr);
+        }
+        .course-btn{
+        flex-flow: column;
+     }
+    .course-btn > button{
+        font-size: 20px;
+
+    }
+     .navigation-links{
+             position: fixed;
+             display: flex;
+             justify-content: space-around;
+             align-items: center;
+             width: 100%;
+             
+         }
+         .btn{
+             width: 100px;
+             height: 50px;
+             font-size: 10px;
+         }
+    }
 </style>
 {% endblock extrastyle %}
 {% block navbar %}
 {% if user.is_authenticated %}
 {% include './nav.html' %}
+
+
+<div class="empty">
+    
+</div>
 <div class="navigation">
+    
     <ul class="navigation-links">
+        
         <a href="#enrolled" class="user-link enrolled-link active">
             <button class="btn btn-lg btn-primary"><li>Enrolled Courses</li></button>
         </a>
@@ -120,9 +208,17 @@
             
         <section class="enrolled active">
             <h1>Your Present Courses</h1>
+            <div class="enrolled-courses">
             {% for enrolled_course in user.ucourse.all %}
-                <h1>{{ enrolled_course.course }}</h1>
+                <div class="course">
+                    <h3>{{ enrolled_course.course }}</h3>
+                    <div class="course-btn">
+                        <a href="/course/{{ enrolled_course.slug }}/"><button class="continue">Continue</button></a>
+                        <button>View Progress</button>
+                    </div>
+                </div>
             {% endfor %}
+            </div>
         </section>
         <section class="all">
             <h1>Available Courses</h1>
@@ -154,5 +250,6 @@
     </div>
 </div>
 <script src="{% static 'js/app.js' %}"></script>
+
 {% endif %}
 {% endblock content %}

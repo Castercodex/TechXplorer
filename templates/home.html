@@ -28,96 +28,31 @@
 <section class="our-courses">
   <h1>Courses We Offer</h1>
   <div class="available-courses">
+  {% for course in courses %}
     <div class="thecourse">
       <div class="img">
-        <img src="{% static '/img/icons/c.png' %}" alt="" />
+        <img src="{% static '/img/icons/' %}{{ course.image }}" alt="" />
       </div>
       <div class="the-course-text">
-        <h3>C</h3>
+        <h3>{{ course.name }}</h3>
         <p>
-          This course takes you on a ride to become a great Software Developer
-          that you always wanted
+          {{ course.description }}
         </p>
       </div>
       <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
+        {% if user.is_authenticated %}
+        <a href="/add_to_enrolled/{{ course.slug }}"><button id="btn-enroll">Enroll Now</button></a>
+        {% else %}
+        <a href="/accounts/login"><button id="btn-enroll">Enroll</button></a>
+        {% endif %}
       </div>
     </div>
-    <div class="thecourse">
-      <div class="img">
-        <img src="{% static '/img/icons/cpp.png' %}" alt="" />
-      </div>
-      <div class="the-course-text">
-        <h3>Cpp</h3>
-        <p>
-          This course takes you on a ride to become a great Software Developer
-          that you always wanted
-        </p>
-      </div>
-      <div class="btn">
-      <button id="btn-enroll">Enroll Now</button>
-      </div>
-    </div>
-    <div class="thecourse">
-      <div class="img">
-        <img src="{% static '/img/icons/java.png' %}" alt="" />
-      </div>
-      <div class="the-course-text">
-        <h3>Java</h3>
-        <p>
-          Looking too become a Bad-ass Android Developer Check Out this awesome
-          course its really worth it
-        </p>
-      </div>
-      <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
-      </div>
-    </div>
-    <div class="thecourse">
-      <div class="img">
-        <img src="{% static '/img/icons/js.png' %}" alt="" />
-      </div>
-      <div class="the-course-text">
-        <h3>JavaScript</h3>
-        <p>
-          Sure Go your Web dev Ride is here A click away from being that web dev
-          you always admired to be
-        </p>
-      </div>
-      <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
-      </div>
-    </div>
-    <div class="thecourse">
-      <div class="img">
-        <img src="{% static '/img/icons/python.png' %}" alt="" />
-      </div>
-      <div class="the-course-text">
-        <h3>Python</h3>
-        <p>
-          Ayo This is the Ultimate Package Fam get to become the Developer that
-          you dreamt of Just a CLick
-        </p>
-      </div>
-      <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
-      </div>
-    </div>
-    <div class="thecourse">
-      <div class="img">
-        <img src="{% static '/img/icons/php.png' %}" alt="" />
-      </div>
-      <div class="the-course-text">
-        <h3>Php</h3>
-        <p>
-          No doubt this Course gonna fetch you out to that Dev who got to be a
-          badass Backend Developer Get It
-        </p>
-      </div>
-      <div class="btn">
-        <button id="btn-enroll">Enroll Now</button>
-      </div>
-    </div>
+  {% endfor %}
+
+
+
+
+
   </div>
 </section>
 <section class="the-team">

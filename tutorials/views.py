@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from userprogress.models import Course
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 # Create your views here.
 
 
@@ -31,18 +31,20 @@ def php_view(request):
     }
     return render(request, "./courses/php.html", context)
 
+    
 class PythonDetail(DetailView):
     model = Python
-    template_name = "./courses/python.html"
-    
-    def python_view(request):
-        python = Python.objects.all()
-        context = {
-            "python": python,
-        }
-        return render(request, "./courses/python.html", context)
+    template_name = "./courses/python.html"   
 
-    
+   
+    # def python_view(request, slug):
+    #     python = Python.objects.all()
+    #     context = {
+    #         "python": python,
+    #         "slug": slug,
+    # }
+    #     return render(request, "./courses/python.html", context)
+            
 def c_view(request):
     c = C.objects.all()
     context = {

@@ -13,11 +13,10 @@ app_name = "tutorials"
 
 urlpatterns = [
     path("", home_view, name="home"),
-    path("course/php/", php_view, name="course"),
-    path("course/python/<slug>", PythonDetail.as_view(), name="course"),
-    path("course/c/", c_view, name="course"),
-    path("course/cpp/", cpp_view, name="course"),
-    path("course/java/", java_view, name="course"),
-    path("course/js/", js_view, name="course"),
-
+    path("course/php/", php_view, name="php"),
+    path("course/python/<slug>", PythonDetail.as_view(), name="python"),
+    path("course/c/", c_view, name="c"),
+    path("course/cpp/", cpp_view, name="cpp"),
+    path("course/java/", java_view, name="java"),
+    path("course/js/", js_view, name="js"),
 ]

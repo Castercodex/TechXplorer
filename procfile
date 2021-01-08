@@ -1,0 +1,1 @@
+web: gunicorn Xplorer.wsgi --log-file -

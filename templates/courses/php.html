@@ -1,41 +1,39 @@
-{% extends 'account/register/register_base.html' %}
-{% load static %}
-{% load embed_video_tags %}
-{% block title %} Php Tutorial {% endblock title %}
+{% extends 'account/register/register_base.html' %} {% load static %} {% load embed_video_tags %} {% block title %} PHP Tutorial {% endblock title %} 
 {% block extrastyle %}
-<style>
-   
-</style>
-{% endblock extrastyle %}
-{% block navbar %}
-{% include 'registration/nav.html' %}
-{% endblock navbar %}
+<style></style>
+{% endblock extrastyle %} {% block navbar %} {% include 'registration/nav.html' %} {% endblock navbar %} 
 {% block content %}
+{% for course in queryset %}
 <div class="container-fluid">
-<div class="empty">
-
-</div>
-<div class="course-titles">
+  <div class="empty"></div>
+  
+  <div class="course-titles">
     <h1>PHP TUTORIALS</h1>
-    {% for course in php %}
-    <a href="#{{ course.id }}"><p>{{ course.title }}</p></a>
+    {% for tut in php %}
+    <a href="?{{ page_request_var }}={{ tut.course_number }}"><p>{{ tut.title }}</p></a>
     {% endfor %}
-</div>
-{% for course in php %}
-<div class="the-course" id="#{{ course.id }}">
+ 
    
+  </div>
+
+  <div class="the-course" id="#{{ course.id }}">
+  
     {% video course.video_url 'small' %}
     <h4>{{ course.title }}</h4>
     <div class="description">
-        <p>{{ course.description }}</p>
+      <p>{{ course.description }}</p>
     </div>
+    {% if is_paginated %}
     <div class="btns">
-        <a href="" class="btn btn-primary">Previous Lesson</a>
-        <a href="" class="btn btn-success">Next Lesson</a>
+    {% if page_obj.has_previous %} 
+      <a href="?{{ page_request_var }}={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous Lesson</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+      <a href="?{{ page_request_var }}={{ page_obj.next_page_number }}" class="btn btn-success">Next Lesson</a>
+    {% endif %}                  
     </div>
-    
+    {% endif %}
+  </div>
 </div>
 {% endfor %}
-
-</div>
 {% endblock content %}

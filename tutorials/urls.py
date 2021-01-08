@@ -1,22 +1,22 @@
 from django.urls import path
 from .views import (
     home_view,
-    php_view,
-    PythonDetail,
-    c_view,
-    cpp_view,
-    java_view,
-    js_view,
+    PhpList,
+    PythonList,
+    CList,
+    CppList,
+    JavaList,
+    JsList,
 )
 
 app_name = "tutorials"
 
 urlpatterns = [
     path("", home_view, name="home"),
-    path("course/php/", php_view, name="php"),
-    path("course/python/<slug>", PythonDetail.as_view(), name="python"),
-    path("course/c/", c_view, name="c"),
-    path("course/cpp/", cpp_view, name="cpp"),
-    path("course/java/", java_view, name="java"),
-    path("course/js/", js_view, name="js"),
+    path("course/php/", PhpList.as_view(), name="php"),
+    path("course/python/", PythonList.as_view(), name="python"),
+    path("course/c/", CList.as_view(), name="c"),
+    path("course/cpp/", CppList.as_view(), name="cpp"),
+    path("course/java/", JavaList.as_view(), name="java"),
+    path("course/js/", JsList.as_view(), name="js"),
 ]

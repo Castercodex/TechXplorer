@@ -9,6 +9,8 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from userprogress.models import Course
 from django.views.generic import DetailView, ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Count, Q
 # Create your views here.
 
 
@@ -17,88 +19,93 @@ def home_view(request):
     context = {"courses": courses}
     return render(request, "home.html", context)
 
+class PhpList(ListView):
+    model = Php
+    template_name = './courses/php.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
 
-# def course_view(request):
-#     python = Python.objects.all()
-#     context = {"python": python}
-#     return render(request, "registration/video.html", context)
-
-
-def php_view(request):
-    php = Php.objects.all()
-    context = {
-        "php": php,
-    }
-    return render(request, "./courses/php.html", context)
-
+    def get_context_data(self, **kwargs):
+        php = Php.objects.all()
+        queryset = Php
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        context['php'] = php
+        return context
     
-class PythonDetail(DetailView):
+
+class PythonList(ListView):
     model = Python
-    template_name = "./courses/python.html"   
+    template_name = './courses/python.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
 
-   
-    # def python_view(request, slug):
-    #     python = Python.objects.all()
-    #     context = {
-    #         "python": python,
-    #         "slug": slug,
-    # }
-    #     return render(request, "./courses/python.html", context)
-            
-def c_view(request):
-    c = C.objects.all()
-    context = {
-        "c": c,
-    }
-    return render(request, "./courses/c.html", context)
+    def get_context_data(self, **kwargs):
+        python = Python.objects.all()
+        queryset = Python 
+        # category_count = queryset
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        # context['category_count'] = category_count
+        context['python'] = python
+        return context
 
 
-def cpp_view(request):
-    cpp = Cpp.objects.all()
-    context = {
-        "cpp": cpp,
-    }
-    return render(request, "./courses/cpp.html", context)
+class CList(ListView):
+    model = C
+    template_name = './courses/c.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
 
-def java_view(request):
-    java = Java.objects.all()
-    context = {
-        "java": java,
-    }
-    return render(request, "./courses/java.html", context)
+    def get_context_data(self, **kwargs):
+        c = C.objects.all()
+        queryset = C
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        context['c'] = c
+        return context
 
 
-def js_view(request):
-    js = JavaScript.objects.all()
-    context = {
-        "js": js,
-    }
-    return render(request, "./courses/js.html", context)
-# @login_required
-# def add_to_course(request, slug):
-#     item = get_object_or_404(Item, slug=slug)
-# order_item, created = OrderItem.objects.get_or_create(
-#     item=item,
-#     user=request.user,
-#     ordered=False
-# )
-# order_qs = Order.objects.filter(user=request.user, ordered=False)
-# if order_qs.exists():
-#     order = order_qs[0]
-#     # check if the order item is in the order
-#     if order.items.filter(item__slug=item.slug).exists():
-#         order_item.quantity += 1
-#         order_item.save()
-#         messages.info(request, "This item quantity was updated.")
-#         return redirect("core:order-summary")
-#     else:
-#         order.items.add(order_item)
-#         messages.info(request, "This item was added to your cart.")
-#         return redirect("core:order-summary")
-# else:
-#     ordered_date = timezone.now()
-#     order = Order.objects.create(
-#         user=request.user, ordered_date=ordered_date)
-#     order.items.add(order_item)
-#     messages.info(request, "This item was added to your cart.")
-#     return redirect("core:order-summary")
+class CppList(ListView):
+    model = Cpp
+    template_name = './courses/cpp.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        cpp = Cpp.objects.all()
+        queryset = Cpp
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        context['cpp'] = cpp
+        return context
+
+
+class JavaList(ListView):
+    model = Java
+    template_name = './courses/java.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        java = Java.objects.all()
+        queryset = Java
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        context['java'] = java
+        return context
+
+
+class JsList(ListView):
+    model = JavaScript
+    template_name = './courses/js.html'
+    context_object_name = 'queryset'
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        js = JavaScript.objects.all()
+        queryset = JavaScript
+        context = super().get_context_data(**kwargs)
+        context['page_request_var'] = "page"
+        context['js'] = js
+        return context

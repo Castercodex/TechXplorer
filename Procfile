@@ -1,1 +1,1 @@
-web: gunicorn Xplorer.wsgi --log-file -
+web: gunicorn Xplorer.wsgi 

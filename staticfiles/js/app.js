@@ -6,11 +6,8 @@ allLink = document.querySelector(".all-link");
 all = document.querySelector(".all");
 paid = document.querySelector(".paid");
 profile = document.querySelector(".profile");
-burger = document.querySelector(".burger")
-nav = document.querySelector(".nav-links")
-
-
-
+burger = document.querySelector(".burger");
+nav = document.querySelector(".nav-links");
 
 enrolledLink.onclick = () => {
   enrolled.classList.toggle("active");
@@ -53,6 +50,4 @@ profileLink.onclick = () => {
   paidLink.classList.remove("active");
 };
 
-burger.onclick = () => {
-  nav.classList.toggle('nav-reveal');
-}
+

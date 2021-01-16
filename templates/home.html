@@ -31,7 +31,7 @@
   {% for course in courses %}
     <div class="thecourse">
       <div class="img">
-        <img src="{% static '/img/icons/' %}{{ course.image }}" alt="" />
+        <img src="{{ course.image.url }}" alt="" />
       </div>
       <div class="the-course-text">
         <h3>{{ course.name }}</h3>

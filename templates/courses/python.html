@@ -1,10 +1,10 @@
 {% extends 'account/register/register_base.html' %} {% load static %} {% load embed_video_tags %} {% block title %} Python Tutorial {% endblock title %} 
 {% block extrastyle %}
-<style></style>
+
 {% endblock extrastyle %} {% block navbar %} {% include 'registration/nav.html' %} {% endblock navbar %} 
 {% block content %}
 {% for course in queryset %}
-<div class="container-fluid">
+<div class="container-fluid cono">
   <div class="empty"></div>
   
   <div class="course-titles">
